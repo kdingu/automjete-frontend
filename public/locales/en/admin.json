@@ -1,0 +1,9 @@
+{
+  "vehicles": {
+    "BASE": "Base attributes",
+    "TECHNICAL": "Technical attributes",
+    "EXTERIOR": "Exterior attributes",
+    "INTERIOR": "Interior attributes",
+    "type_and_condition": "Type and condition"
+  }
+}

@@ -1,0 +1,7 @@
+.RegisterContainer {
+  max-width: 450px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

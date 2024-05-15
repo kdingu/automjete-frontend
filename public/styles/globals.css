@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Fabriga";
+  src: url("../fonts/Fabriga/1a204cd3ccb7f25e06faa548e6251a59.eot");
+  src:
+    url("../fonts/Fabriga/1a204cd3ccb7f25e06faa548e6251a59.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/Fabriga/1a204cd3ccb7f25e06faa548e6251a59.woff") format("woff"),
+    url("../fonts/Fabriga/1a204cd3ccb7f25e06faa548e6251a59.woff2")
+      format("woff2"),
+    url("../fonts/Fabriga/1a204cd3ccb7f25e06faa548e6251a59.ttf")
+      format("truetype"),
+    url("../fonts/Fabriga/1a204cd3ccb7f25e06faa548e6251a59.svg#Fabriga")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background: white;
+  min-height: 100vh;
+}
+
+body,
+body * {
+  font-family: Manrope, "Fabriga", sans-serif;
+}
+
+.TimePicker * {
+  border: none !important;
+}

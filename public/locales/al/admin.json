@@ -1,0 +1,9 @@
+{
+  "vehicles": {
+    "BASE": "Atributet baze",
+    "TECHNICAL": "Atributet teknike",
+    "EXTERIOR": "Atributet e pjeses se jashtme",
+    "INTERIOR": "Atributet e pjeses se brendshme",
+    "type_and_condition": "Gjendja e mjetit"
+  }
+}
