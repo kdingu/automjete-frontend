@@ -24,6 +24,7 @@ const VehicleCard = (props) => {
     description,
     images,
     owner,
+    disableSave,
     handleSaveVehicle,
     savedVehiclesExists
   } = props;
@@ -63,56 +64,59 @@ const VehicleCard = (props) => {
           </div>
           <div className="mb-3 flex justify-between">
             <div className="font-bold">{formatPrice(price, i18n.language)}</div>
-            <div>
-              <button onClick={(e) => handleSaveVehicle(e, {id, title, price, image: images[0].externalUrl})}>
-                <Pill className="transition hover:border-blue-600">
-                  <div className="flex items-center justify-center gap-0 text-xs">
-                    {
-                      savedVehiclesExists ?
-                      <>
-                        <SvgIcon
-                            size='2'
-                            className="w-[8px] mr-[2.5px]"
-                            name="wishlistRedFull"
-                        />
-                        <span>Saved</span>
-                      </>
-                      :
-                      <>
-                        <SvgIcon name="mrez" />
-                        <span>Save</span>
-                      </>
-                    }
-                  </div>
-                </Pill>
-              </button>
-            </div>
+            {!disableSave && (
+                <div>
+                  <button onClick={(e) => handleSaveVehicle(e, {id, title, price, image: images[0].externalUrl})}>
+                    <Pill className="transition hover:border-blue-600">
+                      <div className="flex items-center justify-center gap-0 text-xs">
+                        {
+                          savedVehiclesExists ?
+                              <>
+                                <SvgIcon
+                                    size='2'
+                                    className="w-[8px] mr-[2.5px]"
+                                    name="wishlistRedFull"
+                                />
+                                <span>Saved</span>
+                              </>
+                              :
+                              <>
+                                <SvgIcon name="mrez"/>
+                                <span>Save</span>
+                              </>
+                        }
+                      </div>
+                    </Pill>
+                  </button>
+                </div>
+            )}
           </div>
           <h2 className="mb-1 text-sm">{title}</h2>
           <p
-            className="mb-2 text-sm"
-            dangerouslySetInnerHTML={{ __html: description }}
+              className="mb-2 text-sm"
+              dangerouslySetInnerHTML={{__html: description}}
           ></p>
           {quickDetails.filter((v) => !!v).length > 0 ? (
-            <div className="text-sm font-bold">
-              {quickDetails.filter((v) => !!v).join(" | ")}
-            </div>
+              <div className="text-sm font-bold">
+                {quickDetails.filter((v) => !!v).join(" | ")}
+              </div>
           ) : (
-            <></>
+              <></>
           )}
         </div>
 
-        <hr />
+        <hr/>
 
         <div className="flex items-center justify-between p-2 text-sm">
           <div>
             {owner && (
-              <div className="mb-3">
-                {owner?.name} -&nbsp;
-                <div onClick={handleGoToProfile} className="transition text-blue-400 hover:text-blue-600 inline-block p-1">
-                  See all {owner?.vehiclesCount} vehicles
+                <div className="mb-3">
+                  {owner?.name} -&nbsp;
+                  <div onClick={handleGoToProfile}
+                       className="transition text-blue-400 hover:text-blue-600 inline-block p-1">
+                    See all {owner?.vehiclesCount} vehicles
+                  </div>
                 </div>
-              </div>
             )}
             <div className="flex items-center gap-1">
               <SvgIcon name="pin" />

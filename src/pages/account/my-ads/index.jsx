@@ -33,7 +33,7 @@ function MyAds(props) {
 					{ads.map(vehicle => {
 						return (
 							<div key={vehicle.id} className="mb-10">
-								<CSRVehicleCard {...vehicle} />
+								<CSRVehicleCard {...vehicle} disableSave />
 							</div>
 						)
 					})}
