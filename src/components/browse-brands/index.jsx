@@ -35,7 +35,7 @@ const BrowseBrands = (props) => {
 
       {secondaryBrands.length > 0 && (
         <div className="text-center">
-          <Button variant="text" className="border border-transparent px-2 py-1 hover:border-blue-400 !text-black"
+          <Button variant="text" className="border border-transparent px-2 py-1 hover:border-teal-400 !text-black"
                   onClick={handleToggle}>
             <SvgIcon name="plus" className={`transition transform ${isOpened ? "rotate-45" : ""}`} />
             <span>Show all brands</span>

@@ -14,7 +14,7 @@ const PaginationButton = (props) => {
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`group flex h-8 min-w-[35px] w-max px-2 items-center justify-center rounded border hover:border-blue-800 ${disabled ? "pointer-events-none border-gray-100" : ""} ${className}`}
+      className={`group flex h-8 min-w-[35px] w-max px-2 items-center justify-center rounded border hover:border-teal-800 ${disabled ? "pointer-events-none border-gray-100" : ""} ${className}`}
     >
       {children}
     </button>
@@ -42,13 +42,13 @@ const Pagination = (props) => {
     return (
       <div className="flex items-center justify-start gap-2">
         <PaginationButton onClick={handlePrev} disabled={currentPage === 1}>
-          <SvgIcon className="group-hover:fill-blue-800" name="arrow-previous" />
+          <SvgIcon className="group-hover:fill-teal-800" name="arrow-previous" />
         </PaginationButton>
         <PaginationButton
           onClick={handleNext}
           disabled={currentPage === totalPages}
         >
-          <SvgIcon className="group-hover:fill-blue-800" name="arrow-next" />
+          <SvgIcon className="group-hover:fill-teal-800" name="arrow-next" />
         </PaginationButton>
         <span className="text-sm text-gray-600">
           Page {currentPage} of {totalPages}
@@ -60,12 +60,12 @@ const Pagination = (props) => {
   const start = currentPage - Math.ceil(MAX_PAGINATION / 2);
   const end = currentPage + Math.floor(MAX_PAGINATION / 2);
   const slicedPages = pages.slice(start < 1 ? 1 : start, end < MAX_PAGINATION ? MAX_PAGINATION : end > totalPages ? totalPages - 1 : end);
-  const activeClasses = "bg-blue-300 text-white border-blue-300";
+  const activeClasses = "bg-teal-300 text-white border-teal-300";
 
   return (
     <div className="w-full flex items-center justify-between gap-2">
       <PaginationButton onClick={handlePrev} disabled={currentPage === 1}>
-        <SvgIcon className="group-hover:fill-blue-800" name="arrow-previous" />
+        <SvgIcon className="group-hover:fill-teal-800" name="arrow-previous" />
       </PaginationButton>
 
       <div className="flex justify-center gap-1 text-gray-600">
@@ -106,7 +106,7 @@ const Pagination = (props) => {
         onClick={handleNext}
         disabled={currentPage === totalPages}
       >
-        <SvgIcon className="group-hover:fill-blue-800" name="arrow-next" />
+        <SvgIcon className="group-hover:fill-teal-800" name="arrow-next" />
       </PaginationButton>
     </div>
   );

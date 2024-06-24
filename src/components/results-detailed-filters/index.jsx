@@ -101,7 +101,7 @@ const ResultsDetailedFilters = (props) => {
             <div className="flex h-10 items-center justify-center gap-1">
               <span>
                 <SvgIcon
-                  className="fill-blue-700 transition group-hover:fill-blue-500"
+                  className="fill-teal-700 transition group-hover:fill-teal-500"
                   name="rotate"
                 />
               </span>

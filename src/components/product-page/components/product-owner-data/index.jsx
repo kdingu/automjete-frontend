@@ -19,7 +19,7 @@ const ProductOwnerData = ({owner, version = 'short'}) => {
           <span className="text-xl mr-1">
               {owner.name}
           </span>
-          <a href={`/profile/${owner.id}`} className="text-l cursor-pointer text-blue-400">
+          <a href={`/profile/${owner.id}`} className="text-l cursor-pointer text-teal-400">
               Find out more
           </a>
       </div>

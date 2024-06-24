@@ -20,7 +20,7 @@ const ToggleHead = (props) => {
       className={`Toggled__Head ${!alwaysOpened && !disabled && "cursor-pointer" || "pointer-events-none"} flex h-12 items-center justify-between px-2`}
       onClick={onClick}
     >
-      <span className={`text-sm font-semibold ${disabled ? DISABLED_TEXT_COLOR : "text-blue-800"}`}>{title}</span>
+      <span className={`text-sm font-semibold ${disabled ? DISABLED_TEXT_COLOR : "text-teal-800"}`}>{title}</span>
       <span className="flex items-center justify-end gap-1">
         <span className={`text-xs ${disabled ? DISABLED_TEXT_COLOR : "text-gray-500"}`}>{iconText}</span>
         {!alwaysOpened && (
@@ -28,7 +28,7 @@ const ToggleHead = (props) => {
             name={
               withPopup ? "arrow-right" : isOpen ? "arrow-down" : "arrow-right"
             }
-            className={`${disabled ? DISABLED_TEXT_COLOR : "text-blue-800"}`}
+            className={`${disabled ? DISABLED_TEXT_COLOR : "text-teal-800"}`}
             size="4"
           />
         )}

@@ -103,13 +103,13 @@ const Footer = (props) => {
 
             <div className="flex gap-2 mb-2">
               <Link href="instagram" target="_blank" className="group inline-block">
-                <SvgIcon name="instagram" className="transition group-hover:text-blue-500" />
+                <SvgIcon name="instagram" className="transition group-hover:text-teal-500" />
               </Link>
               <Link href="facebook" target="_blank" className="group inline-block">
-                <SvgIcon name="facebook" className="transition group-hover:text-blue-500" />
+                <SvgIcon name="facebook" className="transition group-hover:text-teal-500" />
               </Link>
               <Link href="tiktok" target="_blank" className="group inline-block">
-                <SvgIcon name="tiktok" className="transition group-hover:text-blue-500" />
+                <SvgIcon name="tiktok" className="transition group-hover:text-teal-500" />
               </Link>
             </div>
 

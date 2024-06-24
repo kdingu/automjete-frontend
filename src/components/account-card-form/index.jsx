@@ -287,7 +287,7 @@ const AccountCardForm = ({ account }) => {
         <p>
           Your current subscription is <strong>{account.subscription}</strong>
           .&nbsp;
-          <Link href="/account/subscriptions" className="text-blue">
+          <Link href="/account/subscriptions" className="teal">
             Check out all subscriptions and their perks here!
           </Link>
         </p>

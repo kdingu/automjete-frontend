@@ -19,9 +19,9 @@ function MyAds(props) {
 				<div className="flex items-center justify-between !mb-10">
 					<Title className="md:!text-left !font-normal">My Advertisements</Title>
 
-					<Link href="/account/my-ads/create" className="text-blue flex items-center gap-2 font-semibold underline inline w-max p-1">
+					<Link href="/account/my-ads/create" className="text-teal flex items-center gap-2 font-semibold underline inline w-max p-1">
 						<div>Advertise a vehicle you want to sell</div>
-						<SvgIcon name="plus" className="fill-blue" />
+						<SvgIcon name="plus" className="fill-teal" />
 					</Link>
 				</div>
 

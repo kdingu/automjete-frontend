@@ -17,11 +17,11 @@ const ButtonGroup = (props) => {
         const _child = React.cloneElement(child, {
           key: index, // todo: improve this key
           isGroupElement: true,
-          className: `${child.props.className} w-full rounded-sm px-4 py-2 bg-transparent border text-black hover:border-blue-600 hover:bg-blue-600 hover:text-white transition-bg transition rounded-none text-gray-500 ${
+          className: `${child.props.className} w-full rounded-sm px-4 py-2 bg-transparent border text-black hover:border-teal-400 hover:bg-teal-300 hover:text-white transition-bg transition rounded-none text-gray-500 ${
             index === 0 ? "rounded-l" : ""
           } ${index === _children.length - 1 ? "rounded-r border-r" : ""} ${
             child.props.active
-              ? "border-r border-blue-700 text-blue-700 font-semibold"
+              ? "border-r border-teal-400 text-teal-400 font-semibold"
               : "border-gray-300"
           } ${
             activeIndex !== null &&

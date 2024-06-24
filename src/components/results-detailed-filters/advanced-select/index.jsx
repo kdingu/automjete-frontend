@@ -86,7 +86,7 @@ const AdvancedSelect = (props) => {
             <div
               key={opt.value}
               onClick={() => handleSelect(opt.value)}
-              className={`inline-block w-max border-l-4 px-2 ${isSelected(opt.value) ? "border-blue-400 bg-gray-100" : "border-transparent"} cursor-pointer text-blue-800 hover:text-blue-600`}
+              className={`inline-block w-max border-l-4 px-2 ${isSelected(opt.value) ? "border-teal-400 bg-gray-100" : "border-transparent"} cursor-pointer text-teal-800 hover:text-teal-600`}
             >
               {opt.label}
             </div>

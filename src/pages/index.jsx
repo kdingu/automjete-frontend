@@ -31,7 +31,7 @@ const Home = (props) => {
 
         <div className="border my-20">
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="bg-blue-500 px-6 py-8">
+            <div className="bg-teal-500 px-6 py-8">
               <Title className="!text-left text-white">Place an advert on MotorsMarket</Title>
               <SubTitle className="!text-left text-white">Get the price you deserve</SubTitle>
               <SubTitle className="!text-left text-white mt-4 mb-0">
@@ -39,7 +39,7 @@ const Home = (props) => {
               </SubTitle>
 
               <Link className="block mt-10" href="/account/my-ads/create">
-                <Button className="bg-white hover:bg-white hover:!text-blue-800 border-white px-10 py-6 text-3xl md:text-xl !text-blue-400">Create your advert</Button>
+                <Button className="bg-white hover:bg-white hover:!text-teal-800 border-white px-10 py-6 text-3xl md:text-xl !text-teal-400">Create your advert</Button>
               </Link>
 
               <Link className="block mt-3 text-white underline text-lg" href="/account/my-ads">
@@ -60,12 +60,12 @@ const Home = (props) => {
             <SubTitle>All the latest news for you</SubTitle>
             <div className="flex gap-x-10 justify-center mt-8">
               <Link href="#" className="group flex flex-col items-center">
-                <SvgIcon name="instagram" className="group-hover:text-blue-400" />
-                <span className="group-hover:text-blue-400">Instagram</span>
+                <SvgIcon name="instagram" className="group-hover:text-teal-400" />
+                <span className="group-hover:text-teal-400">Instagram</span>
               </Link>
               <Link href="#" className="group flex flex-col items-center">
-                <SvgIcon name="facebook" className="group-hover:text-blue-400" />
-                <span className="group-hover:text-blue-400">Facebook</span>
+                <SvgIcon name="facebook" className="group-hover:text-teal-400" />
+                <span className="group-hover:text-teal-400">Facebook</span>
               </Link>
             </div>
           </div>

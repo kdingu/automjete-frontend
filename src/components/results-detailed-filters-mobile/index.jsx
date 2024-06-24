@@ -39,11 +39,11 @@ const ResultsDetailedFiltersMobile = (props) => {
       <div className="lg:hidden bg-white py-4 sticky top-0 left-0 right-0 z-10">
         <Container className="flex gap-1">
           <Button variant="outline" className="group w-full" onClick={handleToggleFiltersUi}>
-            <SvgIcon className="group-hover:text-white text-blue transition" name="arrow-down" />
+            <SvgIcon className="group-hover:text-white text-teal transition" name="arrow-down" />
             Filters
           </Button>
           <Button variant="outline" className="group w-full">
-            <SvgIcon className="group-hover:text-white text-blue transition" name="arrow-down" />
+            <SvgIcon className="group-hover:text-white text-teal transition" name="arrow-down" />
             Sort
           </Button>
         </Container>

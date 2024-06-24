@@ -59,7 +59,7 @@ const FilterKeywords = (props) => {
               return (
                 <div
                   key={`${keyword}_${index}`}
-                  className="flex items-center gap-2 rounded-3xl bg-blue-100 px-3 py-1 font-semibold text-blue-600"
+                  className="flex items-center gap-2 rounded-3xl bg-teal-100 px-3 py-1 font-semibold text-teal-600"
                 >
                   {keyword}
                   <div

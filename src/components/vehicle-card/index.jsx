@@ -67,7 +67,7 @@ const VehicleCard = (props) => {
             {!disableSave && (
                 <div>
                   <button onClick={(e) => handleSaveVehicle(e, {id, title, price, image: images[0].externalUrl})}>
-                    <Pill className="transition hover:border-blue-600">
+                    <Pill className="transition hover:border-teal-600">
                       <div className="flex items-center justify-center gap-0 text-xs">
                         {
                           savedVehiclesExists ?
@@ -113,7 +113,7 @@ const VehicleCard = (props) => {
                 <div className="mb-3">
                   {owner?.name} -&nbsp;
                   <div onClick={handleGoToProfile}
-                       className="transition text-blue-400 hover:text-blue-600 inline-block p-1">
+                       className="transition text-teal-400 hover:text-teal-600 inline-block p-1">
                     See all {owner?.vehiclesCount} vehicles
                   </div>
                 </div>

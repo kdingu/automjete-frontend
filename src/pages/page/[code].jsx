@@ -35,7 +35,7 @@ const StaticPage = (props) => {
 
   return (
     <MainLayout>
-      <div className="py-10 mb-10 bg-blue-50">
+      <div className="py-10 mb-10 bg-teal-50">
         <Container>
           <div className="flex justify-between items-center">
             <div>

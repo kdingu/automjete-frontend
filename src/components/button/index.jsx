@@ -22,13 +22,13 @@ const Button = (props) => {
 
     switch (variant) {
       case "text":
-        return `${disabled && "!text-gray-400 pointer-events-none cursor-normal"}  text-blue-400 hover:text-blue-500 transition`;
+        return `${disabled && "!text-gray-400 pointer-events-none cursor-normal"}  text-teal hover:text-teal-500 transition`;
       case "link":
-        return `${disabled && "!text-gray-400 pointer-events-none cursor-normal"} transition text-blue-400 border-b-2 border-blue-400 px-1 hover:text-blue-500 hover:border-blue-500`;
+        return `${disabled && "!text-gray-400 pointer-events-none cursor-normal"} transition text-teal border-b-2 border-teal px-1 hover:text-teal-500 hover:border-teal-500`;
       case "outline":
-        return `${disabled && "!text-gray-400 pointer-events-none cursor-normal border-gray-100 !bg-gray-100"} rounded-sm px-4 py-1 min-h-[40px] bg-transparent border border-blue-400 text-blue-400 hover:bg-blue-50 hover:border-blue-200 transition-bg transition`;
+        return `${disabled && "!text-gray-400 pointer-events-none cursor-normal border-gray-100 !bg-gray-100"} rounded-sm px-4 py-1 min-h-[40px] bg-transparent border border-teal text-teal hover:bg-teal-100 hover:border-teal-200 transition-bg transition`;
       default: // fill
-        return `${disabled && "!text-gray-400 pointer-events-none cursor-normal border-gray-100 !bg-gray-100"} rounded-sm px-4 py-1 min-h-[40px] border border-blue-400 bg-blue-400 text-white hover:bg-blue-500 hover:border-blue-500 transition-bg transition`;
+        return `${disabled && "!text-gray-400 pointer-events-none cursor-normal border-gray-100 !bg-gray-100"} rounded-sm px-4 py-1 min-h-[40px] border border-teal bg-teal text-white hover:bg-teal-500 hover:border-teal-500 transition-bg transition`;
     }
   };
 

@@ -8,20 +8,20 @@ const SaveSearch = (props) => {
         <Button className="group" variant="text" onClick={() => handleSaveSearch()}>
         <div className="flex h-10 items-center justify-center gap-1">
             <span>
-                {savedSearchExists ? 
+                {savedSearchExists ?
                 <SvgIcon
                     size='4'
                     name="wishlistRedFull"
                 />
                 :
                 <SvgIcon
-                    className="fill-blue-700 transition group-hover:fill-blue-500"
+                    className="fill-teal-700 transition group-hover:fill-teal-500"
                     name="heart"
                 />
                 }
             </span>
             <span>
-            {savedSearchExists ? 
+            {savedSearchExists ?
                 "Search saved"
             :
                 "Save search"

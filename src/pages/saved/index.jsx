@@ -63,8 +63,8 @@ const Saved = (props) => {
     <MainLayout>
       <Container className="my-10">
         <div className="border-b-2 flex justify-center">
-          <div className={`py-6 w-1/2 text-center cursor-pointer ${chosenElement === 'searches' ? 'border-b-blue-800 border-b-2' : ''}`} onClick={() => setChosenElement('searches')}>Searches</div>
-          <div className={`py-6 w-1/2 text-center cursor-pointer ${chosenElement === 'adverts' ? 'border-b-blue-800 border-b-2' : ''}`} onClick={() => setChosenElement('adverts')}>Adverts</div>
+          <div className={`py-6 w-1/2 text-center cursor-pointer ${chosenElement === 'searches' ? 'border-b-teal-800 border-b-2' : ''}`} onClick={() => setChosenElement('searches')}>Searches</div>
+          <div className={`py-6 w-1/2 text-center cursor-pointer ${chosenElement === 'adverts' ? 'border-b-teal-800 border-b-2' : ''}`} onClick={() => setChosenElement('adverts')}>Adverts</div>
         </div>
         <section className="mb-10">
           <SavedData data={savedData} dataType={chosenElement} remove={removeFunction} searchRedirect={searchRedirect} />

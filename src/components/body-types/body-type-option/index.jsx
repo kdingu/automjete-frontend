@@ -11,14 +11,14 @@ const BodyTypeOption = (props) => {
 
   return (
     <div
-      className={`${disabled ? "pointer-events-none opacity-40" : "cursor-pointer"} group relative inline-block rounded border border-transparent p-2 text-center text-sm text-gray-600 hover:border-blue-800`}
+      className={`${disabled ? "pointer-events-none opacity-40" : "cursor-pointer"} group relative inline-block rounded border border-transparent p-2 text-center text-sm text-gray-600 hover:border-teal-800`}
       onClick={() => onClick(data)}
     >
       {active && (
         <div className="absolute right-1 top-1">
           <SvgIcon
             name="tick"
-            className="fill-blue-500 group-hover:fill-blue-800"
+            className="fill-teal-500 group-hover:fill-teal-800"
           />
         </div>
       )}
@@ -30,7 +30,7 @@ const BodyTypeOption = (props) => {
         className="ml-auto mr-auto"
       />
       <p
-        className={`mt-2 group-hover:text-blue-600 ${active ? "text-blue-800" : ""}`}
+        className={`mt-2 group-hover:text-teal-600 ${active ? "text-teal-800" : ""}`}
       >
         {t(data.label)}
       </p>

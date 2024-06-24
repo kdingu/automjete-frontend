@@ -74,13 +74,13 @@ const Header = (props) => {
     <header
       className={`Header z-20 border-b border-gray-100 ${isMenuMobileOpen ? "fixed top-0 w-full bg-white" : css.menuShadow}`}
     >
-      <div className="bg-blue-800 py-2">
+      <div className="bg-teal py-2">
         <Container>
           <div className="hidden gap-3 text-xs lg:flex">
             {props.categories.map((ctg) => (
               <a
                 key={ctg.id}
-                className="cursor-pointer text-white transition hover:!text-gray-400"
+                className="cursor-pointer text-white transition hover:!text-teal-800"
                 href={`/?category=${ctg.slug}`}
               >
                 {ctg.name}

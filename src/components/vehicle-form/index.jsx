@@ -279,11 +279,11 @@ const VehicleForm = (props) => {
 										<div className="">
 											<div className="flex gap-1 justify-between">
 												<button
-													className="group hover:border-blue hover:text-blue transition flex justify-center items-center px-4 h-[40px]"
+													className="group hover:border-teal hover:text-teal transition flex justify-center items-center px-4 h-[40px]"
 													onClick={onImageUpload}
 												>
 													<span className="mr-2">Add</span>
-													<SvgIcon name="plus" className="group-hover:fill-blue transition" />
+													<SvgIcon name="plus" className="group-hover:fill-teal transition" />
 												</button>
 												{imageList.length > 0 && (
 													<button

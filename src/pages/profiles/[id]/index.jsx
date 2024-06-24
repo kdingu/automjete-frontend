@@ -84,7 +84,7 @@ const Profile = (props) => {
       <Container className="my-10 px-0">
         {/* Widget 1 */}
         <div className="border flex flex-col lg:flex-row min-h-[580px]">
-          <div className="w-12/12 lg:w-8/12 bg-blue-50 relative min-h-[400px]">
+          <div className="w-12/12 lg:w-8/12 bg-teal-50 relative min-h-[400px]">
             <MotorsImage fill className="object-contain" src={dealer.banner?.externalUrl} />
           </div>
 
@@ -114,7 +114,7 @@ const Profile = (props) => {
         </div>
 
         {/* Widget 2 */}
-        <div className="bg-blue-50 p-4 lg:my-16 lg:px-32 lg:pt-8 lg:pb-12">
+        <div className="bg-teal-100 p-4 lg:my-16 lg:px-32 lg:pt-8 lg:pb-12">
           <Title className="!text-left mb-6">Get in touch</Title>
 
           <div className="grid gap-10 lg:grid-cols-3">
@@ -134,11 +134,11 @@ const Profile = (props) => {
 
             <div>
               <h3 className="text-xl text-semibold">Website</h3>
-              <Link className="text-blue-400" href={`https://${dealer.website}`}
+              <Link className="text-teal" href={`https://${dealer.website}`}
                     target="_blank">{dealer.website}</Link>
 
               <h3 className="mt-5 text-xl text-semibold">Phone number</h3>
-              <Link className="text-blue-400" href={`tel:${dealer.phone}`}>{dealer.phone}</Link>
+              <Link className="text-teal" href={`tel:${dealer.phone}`}>{dealer.phone}</Link>
             </div>
 
             <div>
@@ -225,7 +225,7 @@ const Profile = (props) => {
         </div>
 
         {/* Widget 7 */}
-        <div className="bg-blue-50 p-4 lg:my-16 lg:px-32 lg:pt-8 lg:pb-12" id="contact">
+        <div className="bg-teal-100 p-4 lg:my-16 lg:px-32 lg:pt-8 lg:pb-12" id="contact">
           <Title className="!text-left mb-8">Contact us</Title>
 
           <div className="flex flex-col lg:flex-row gap-10">

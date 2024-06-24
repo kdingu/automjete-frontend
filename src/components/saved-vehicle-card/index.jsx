@@ -20,7 +20,7 @@ const SavedVehicleCard = ({vehicle, removeVehicle = noop}) => {
                         <SvgIcon name="delete" />
                     </div>
                 </div>
-                <div className="text-sm text-blue-400 capitalize">{vehicle.title}</div>
+                <div className="text-sm text-teal-400 capitalize">{vehicle.title}</div>
             </div>
         </div>
     )
