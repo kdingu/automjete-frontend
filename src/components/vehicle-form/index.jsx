@@ -356,8 +356,8 @@ const VehicleForm = (props) => {
 const getProps = (state) => {
 	return {
 		categories: getCategories(state),
-		makes: state.application.data.makes,
-		account: state.session.account
+		makes: state.application?.data?.makes || [],
+		account: state.session?.account || {}
 	};
 };
 
