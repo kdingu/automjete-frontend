@@ -25,7 +25,7 @@ const createApolloClient = () => {
     },
   }
 
-  if (IS_DEV) {
+  if (IS_DEV || true) {
     defaultOptions.watchQuery.fetchPolicy = "no-cache";
     defaultOptions.query.fetchPolicy = "no-cache";
   }
