@@ -1,42 +1,42 @@
 .Sidebar {
-  height: 100%;
-  left: 0px;
-  position: fixed;
-  top: 0px;
-  animation: 0.5s ease 0s 1 normal forwards running sidebar;
-  width: 100%;
-  z-index: 11;
+    height: 100%;
+    left: 0px;
+    position: fixed;
+    top: 0px;
+    animation: 0.5s ease 0s 1 normal forwards running sidebar;
+    width: 100%;
+    z-index: 11;
 }
 
 .SidebarBody {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  max-width: 522px;
-  right: 0px;
-  width: 100%;
-  background: white;
-  position: fixed;
-  height: 100%;
-  z-index: 11;
-  top: 0;
-  padding: 24px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    max-width: 522px;
+    right: 0px;
+    width: 100%;
+    background: white;
+    position: fixed;
+    height: 100%;
+    z-index: 11;
+    top: 0;
+    padding: 24px;
 }
 
 .SidebarHeader {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 48px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 48px;
 }
 
 .SidebarCloseIcon {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @keyframes sidebar {
-  0% {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  100% {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
 }

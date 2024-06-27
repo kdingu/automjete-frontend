@@ -10,80 +10,80 @@ import {toast} from "react-toastify"
 const DEFAULT_LIMIT = 5;
 
 const ProfileVehicles = (props) => {
-  const {dealerId, vehicles: _vehicles} = props;
+    const {dealerId, vehicles: _vehicles} = props;
 
-  const [vehicles, setVehicles] = useState(_vehicles);
-  const [page, setPage] = useState(_vehicles.page || 1)
-  const [limit, setLimit] = useState(_vehicles.limit || DEFAULT_LIMIT)
+    const [vehicles, setVehicles] = useState(_vehicles);
+    const [page, setPage] = useState(_vehicles.page || 1)
+    const [limit, setLimit] = useState(_vehicles.limit || DEFAULT_LIMIT)
 
-  const handleChangePage = (page) => {
-    setPage(page)
-  };
-
-  useLayoutEffect(() => {
-    const handleSearch = async () => {
-      const response = await doSearch({
-        page,
-        limit,
-        parameters: {
-          owner: {id: dealerId},
-        }
-      });
-
-      if (!response.success || !response.data) {
-        toast.error("Something went wrong...");
-      } else {
-        setVehicles(response.data)
-      }
+    const handleChangePage = (page) => {
+        setPage(page)
     };
 
-    handleSearch()
-  }, [page, limit]);
+    useLayoutEffect(() => {
+        const handleSearch = async () => {
+            const response = await doSearch({
+                page,
+                limit,
+                parameters: {
+                    owner: {id: dealerId},
+                }
+            });
 
-  return (
-    <MainLayout>
-      <Container className="my-10">
-        <Title className="mb-20">Dealer vehicles</Title>
+            if (!response.success || !response.data) {
+                toast.error("Something went wrong...");
+            } else {
+                setVehicles(response.data)
+            }
+        };
 
-        <div>
-          <Pagination mini currentPage={page} totalPages={vehicles.totalPages} onChange={handleChangePage} />
+        handleSearch()
+    }, [page, limit]);
 
-          {vehicles.results.map(vehicle => {
-            return (
-              <div key={vehicle.id} className="my-10">
-                <VehicleCard {...vehicle} />
-              </div>
-            )
-          })}
+    return (
+        <MainLayout>
+            <Container className="my-10">
+                <Title className="mb-20">Dealer vehicles</Title>
 
-          <Pagination currentPage={page} totalPages={vehicles.totalPages} onChange={handleChangePage} />
-        </div>
-      </Container>
-    </MainLayout>
-  );
+                <div>
+                    <Pagination mini currentPage={page} totalPages={vehicles.totalPages} onChange={handleChangePage}/>
+
+                    {vehicles.results.map(vehicle => {
+                        return (
+                            <div key={vehicle.id} className="my-10">
+                                <VehicleCard {...vehicle} />
+                            </div>
+                        )
+                    })}
+
+                    <Pagination currentPage={page} totalPages={vehicles.totalPages} onChange={handleChangePage}/>
+                </div>
+            </Container>
+        </MainLayout>
+    );
 };
 
 export default ProfileVehicles;
 
 export const getServerSideProps = async ({params, query}) => {
-  const response = await doSearch({
-    page: query.page || 1,
-    limit: query.limit || DEFAULT_LIMIT,
-    parameters: {
-      owner: {id: params.id},
-    }
-  });
+    const response = await doSearch({
+        page: query.page || 1,
+        limit: query.limit || DEFAULT_LIMIT,
+        parameters: {
+            owner: {id: params.id},
+        }
+    });
 
-  if (!response.success || !response.data) {
+    if (!response.success || !response.data) {
+        return {
+            notFound: 404
+        }
+    }
+
     return {
-      notFound: 404
-    }
-  }
-
-  return {
-    props: {
-      dealerId: params.id,
-      vehicles: response.data
-    }
-  };
+        props: {
+            dealerId: params.id,
+            vehicles: response.data
+        }
+    };
 };

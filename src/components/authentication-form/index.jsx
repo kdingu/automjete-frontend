@@ -5,21 +5,21 @@ import {getAuthFormSelectors} from "./selectors";
 import {connect} from "react-redux";
 
 const AuthenticationForm = (props) => {
-	const [authState, setAuthState] = useState("login");
+    const [authState, setAuthState] = useState("login");
 
-	return (
-		<div className="w-full">
-			{authState === "login" && (
-				<LoginForm authError={props.authError} setAuthState={setAuthState} />
-			)}
-			{authState === "register" && (
-				<RegistrationForm
-					authError={props.authError}
-					setAuthState={setAuthState}
-				/>
-			)}
-		</div>
-	);
+    return (
+        <div className="w-full">
+            {authState === "login" && (
+                <LoginForm authError={props.authError} setAuthState={setAuthState}/>
+            )}
+            {authState === "register" && (
+                <RegistrationForm
+                    authError={props.authError}
+                    setAuthState={setAuthState}
+                />
+            )}
+        </div>
+    );
 };
 
 export default connect(getAuthFormSelectors)(AuthenticationForm);

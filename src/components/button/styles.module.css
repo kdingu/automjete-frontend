@@ -1,9 +1,9 @@
 .Button {
-  appearance: none;
-  border-radius: 2px;
-  border: 1px solid #666;
-  padding: 4px 12px;
-  height: 40px;
-  color: #242d3d;
-  transition: all 0.25s ease-in-out;
+    appearance: none;
+    border-radius: 2px;
+    border: 1px solid #666;
+    padding: 4px 12px;
+    height: 40px;
+    color: #242d3d;
+    transition: all 0.25s ease-in-out;
 }

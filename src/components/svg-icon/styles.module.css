@@ -1,8 +1,8 @@
 .SvgIcon {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 .SvgIconWhite,
 .SvgIconWhite * {
-  fill: white;
+    fill: white;
 }

@@ -2,7 +2,7 @@ export const getSession = (state) => state.session || {};
 
 export const getSessionLoading = (state) => getSession(state).loading || false;
 export const getSessionLoggedIn = (state) =>
-  getSession(state).loggedIn || false;
+    getSession(state).loggedIn || false;
 export const getSessionUser = (state) => getSession(state).user || {};
 export const getSessionToken = (state) => getSession(state).token || "";
 export const getSessionError = (state) => getSession(state).error || "";

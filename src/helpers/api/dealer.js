@@ -1,5 +1,5 @@
 import ApolloClient from "@/helpers/apollo-wrapper";
-import { gql } from "@apollo/client";
+import {gql} from "@apollo/client";
 
 const query = gql`
     query Accounts($where: AccountWhereUniqueInput!) {
@@ -44,63 +44,63 @@ const query = gql`
 `;
 
 export const getDealer = async (id) => {
-  try {
-    const { data, error } = await ApolloClient.query({
-      variables: { where: { id } },
-      query,
-    });
+    try {
+        const {data, error} = await ApolloClient.query({
+            variables: {where: {id}},
+            query,
+        });
 
-    if (error) {
-      return { success: false, error };
+        if (error) {
+            return {success: false, error};
+        }
+
+        return {success: true, data: data.account};
+    } catch (e) {
+        return {success: false, error: e.toString()};
     }
-
-    return { success: true, data: data.account };
-  } catch (e) {
-    return { success: false, error: e.toString() };
-  }
 };
 
 export const getDealers = async () => {
-  try {
-    const { data, error } = await ApolloClient.query({
-      variables: {
-        "where": {
-          "owner": {
-            "type": {
-              "equals": "s1_dealer",
+    try {
+        const {data, error} = await ApolloClient.query({
+            variables: {
+                "where": {
+                    "owner": {
+                        "type": {
+                            "equals": "s1_dealer",
+                        },
+                    },
+                },
             },
-          },
-        },
-      },
-      query: gql`
-          query Dealers($where: AccountWhereInput!) {
-              accounts(where: $where) {
-                  id
-                  name
-                  phone
-                  address {
-                      country {
-                          name
-                      }
-                      city {
-                          name
-                      }
-                  }
-                  owner {
-                      id
-                      vehiclesCount
-                  }
-              }
-          }
-      `,
-    });
+            query: gql`
+                query Dealers($where: AccountWhereInput!) {
+                    accounts(where: $where) {
+                        id
+                        name
+                        phone
+                        address {
+                            country {
+                                name
+                            }
+                            city {
+                                name
+                            }
+                        }
+                        owner {
+                            id
+                            vehiclesCount
+                        }
+                    }
+                }
+            `,
+        });
 
-    if (error) {
-      return { success: false, error };
+        if (error) {
+            return {success: false, error};
+        }
+
+        return {success: true, data: data.accounts};
+    } catch (e) {
+        return {success: false, error: e.toString()};
     }
-
-    return { success: true, data: data.accounts };
-  } catch (e) {
-    return { success: false, error: e.toString() };
-  }
 };

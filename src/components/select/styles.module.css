@@ -1,25 +1,25 @@
 .Select {
-  appearance: none;
-  border-radius: 2px;
-  border: 1px solid #666;
-  padding: 4px 12px;
-  height: 40px;
-  color: #242d3d;
-  transition: all 0.25s ease-in-out;
+    appearance: none;
+    border-radius: 2px;
+    border: 1px solid #666;
+    padding: 4px 12px;
+    height: 40px;
+    color: #242d3d;
+    transition: all 0.25s ease-in-out;
 }
 
 .SelectContainer {
-  position: relative;
-  width: max-content;
-  cursor: pointer;
+    position: relative;
+    width: max-content;
+    cursor: pointer;
 }
 
 .SelectContainer svg {
-  fill: rgb(0, 152, 235);
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: all 0.25s ease-in-out 0s;
-  pointer-events: none;
+    fill: rgb(0, 152, 235);
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.25s ease-in-out 0s;
+    pointer-events: none;
 }
