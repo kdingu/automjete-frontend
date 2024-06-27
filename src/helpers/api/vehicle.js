@@ -143,45 +143,45 @@ export const createVehicle = async (vehicle = {}, categoryData = {}) => {
 	const {data, error} = await ApolloClient.mutate({
 		variables: {data: transformVehiclePayload(vehicle, categoryData)},
 		mutation: gql`
-        mutation CreateVehicle($data: VehicleCreateInput!) {
-            createVehicle(data: $data) {
-                id
-                make {
-                    name
-                    slug
-                }
-                model {
-                    name
-                    slug
-                }
-                price
-                name
-                title
-                description
-                images {
-                    externalUrl
-                    name
-                    image {
-                        extension
-                        filesize
-                        height
-                        id
-                        url
-                        width
-                    }
-                }
-                attributeValues {
+            mutation CreateVehicle($data: VehicleCreateInput!) {
+                createVehicle(data: $data) {
                     id
-                    data
-                    attributeName
-                    attribute {
+                    make {
+                        name
+                        slug
+                    }
+                    model {
+                        name
+                        slug
+                    }
+                    price
+                    name
+                    title
+                    description
+                    images {
+                        externalUrl
+                        name
+                        image {
+                            extension
+                            filesize
+                            height
+                            id
+                            url
+                            width
+                        }
+                    }
+                    attributeValues {
                         id
-                        code
+                        data
+                        attributeName
+                        attribute {
+                            id
+                            code
+                        }
                     }
                 }
             }
-        }
-		`,
+        `,
 		context: {
 			headers: {
 				"Authorization": `Bearer ${getCookie(SESSION_KEY)}`,
