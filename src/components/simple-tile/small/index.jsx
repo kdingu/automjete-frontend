@@ -5,6 +5,8 @@ import MotorsImage from "@/components/motors-image";
 const SmallSimpleTile = (props) => {
   const { href = "", imageUrl, text } = props;
 
+    console.log("SmallSimpleTile", {href})
+
   return (
     <Link href={href}
           className="group border rounded transition hover:border-teal-400 block w-[270px] h-[42px] flex items-center">
