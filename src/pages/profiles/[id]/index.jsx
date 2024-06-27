@@ -20,6 +20,8 @@ import Select from "@/components/select";
 import Input from "@/components/input";
 import Checkbox from "@/components/checkbox";
 import { useFormik } from "formik";
+import DealerProfilePage from "@/components/dealer-profile-page";
+import PrivateProfilePage from "@/components/private-profile-page";
 
 const weekDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
@@ -82,6 +84,9 @@ const Profile = (props) => {
   return (
     <MainLayout>
       <Container className="my-10 px-0">
+        {dealer.owner.type === "s1_dealer" && <DealerProfilePage />}
+        {dealer.owner.type === "s1_private" && <PrivateProfilePage />}
+
         {/* Widget 1 */}
         <div className="border flex flex-col lg:flex-row min-h-[580px]">
           <div className="w-12/12 lg:w-8/12 bg-teal-50 relative min-h-[400px]">

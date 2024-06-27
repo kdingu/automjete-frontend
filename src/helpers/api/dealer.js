@@ -37,6 +37,7 @@ const query = gql`
             vehiclesCount
             owner {
                 id
+                type
             }
         }
     }
