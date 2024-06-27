@@ -98,18 +98,12 @@ const Footer = (props) => {
           </div>
 
           <div className="col-span-12 lg:col-span-4">
-            <p className="text-sm mb-2">Help us improve our website</p>
-            <Button variant="outline" className="mb-4">Send feedback</Button>
-
             <div className="flex gap-2 mb-2">
               <Link href="instagram" target="_blank" className="group inline-block">
                 <SvgIcon name="instagram" className="transition group-hover:text-teal-500" />
               </Link>
               <Link href="facebook" target="_blank" className="group inline-block">
                 <SvgIcon name="facebook" className="transition group-hover:text-teal-500" />
-              </Link>
-              <Link href="tiktok" target="_blank" className="group inline-block">
-                <SvgIcon name="tiktok" className="transition group-hover:text-teal-500" />
               </Link>
             </div>
 
