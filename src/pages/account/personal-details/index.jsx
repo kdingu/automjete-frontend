@@ -29,7 +29,7 @@ function PersonalDetails(props) {
                 </section>
 
                 <section id="account-card-form">
-                    <AccountCardForm account={account}/>
+                    <AccountCardForm user={user} account={account}/>
                 </section>
             </Container>
         </MainLayout>

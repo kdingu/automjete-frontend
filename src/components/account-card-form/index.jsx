@@ -26,7 +26,10 @@ const Placeholder = (props) => (
     </div>
 );
 
-const AccountCardForm = ({account}) => {
+const AccountCardForm = ({user, account}) => {
+    const isPrivate = user?.type === "s1_private";
+    const isDealer = user?.type === "s1_dealer";
+
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = (values) => {
@@ -150,137 +153,139 @@ const AccountCardForm = ({account}) => {
     return (
         <Card title="Account" className="grid grid-cols-1 gap-3">
             {/* LOGO & BANNER */}
-            <div className="flex h-[200px] gap-4">
-                {/* LOGO */}
-                <div className="w-full max-w-[200px]">
-                    <SubTitle className="!text-left">Logo</SubTitle>
+            {isDealer && (
+                <div className="flex h-[200px] gap-4">
+                    {/* LOGO */}
+                    <div className="w-full max-w-[200px]">
+                        <SubTitle className="!text-left">Logo</SubTitle>
 
-                    <ImageUploading
-                        value={formik.values.logo}
-                        onChange={handleChangeLogo}
-                        dataURLKey="data_url"
-                    >
-                        {({
-                              imageList,
-                              onImageUpload,
-                              onImageRemoveAll,
-                              onImageUpdate,
-                              onImageRemove,
-                              isDragging,
-                              dragProps,
-                          }) => (
-                            // write your building UI
-                            <div className="">
-                                <div className="flex justify-between gap-1">
-                                    {imageList.length === 0 && (
-                                        <Placeholder text="Add a logo" onClick={onImageUpload}/>
-                                    )}
-                                </div>
+                        <ImageUploading
+                            value={formik.values.logo}
+                            onChange={handleChangeLogo}
+                            dataURLKey="data_url"
+                        >
+                            {({
+                                  imageList,
+                                  onImageUpload,
+                                  onImageRemoveAll,
+                                  onImageUpdate,
+                                  onImageRemove,
+                                  isDragging,
+                                  dragProps,
+                              }) => (
+                                // write your building UI
                                 <div className="">
-                                    {imageList.map((image, index) => (
-                                        <div
-                                            key={index}
-                                            className="group/image relative h-[150px] w-full overflow-hidden rounded-xl border"
-                                        >
-                                            <img
-                                                src={image["data_url"]}
-                                                alt=""
-                                                width="100"
-                                                className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-cover"
-                                            />
+                                    <div className="flex justify-between gap-1">
+                                        {imageList.length === 0 && (
+                                            <Placeholder text="Add a logo" onClick={onImageUpload}/>
+                                        )}
+                                    </div>
+                                    <div className="">
+                                        {imageList.map((image, index) => (
                                             <div
-                                                className="image-item__btn-wrapper absolute h-full w-full bg-black opacity-0 group-hover/image:opacity-50">
-                                                <button
-                                                    onClick={() => onImageUpdate(index)}
-                                                    className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 font-bold text-white"
-                                                >
-                                                    Edit
-                                                </button>
-                                                <div className="group/delete inline-block">
+                                                key={index}
+                                                className="group/image relative h-[150px] w-full overflow-hidden rounded-xl border"
+                                            >
+                                                <img
+                                                    src={image["data_url"]}
+                                                    alt=""
+                                                    width="100"
+                                                    className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-cover"
+                                                />
+                                                <div
+                                                    className="image-item__btn-wrapper absolute h-full w-full bg-black opacity-0 group-hover/image:opacity-50">
                                                     <button
-                                                        onClick={() => onImageRemove(index)}
-                                                        className="absolute right-[5px] top-[5px] rounded-full border-2 p-2 group-hover/delete:border-red-400"
+                                                        onClick={() => onImageUpdate(index)}
+                                                        className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 font-bold text-white"
                                                     >
-                                                        <SvgIcon
-                                                            name="close"
-                                                            className="fill-white group-hover/delete:fill-red-400"
-                                                        />
+                                                        Edit
                                                     </button>
+                                                    <div className="group/delete inline-block">
+                                                        <button
+                                                            onClick={() => onImageRemove(index)}
+                                                            className="absolute right-[5px] top-[5px] rounded-full border-2 p-2 group-hover/delete:border-red-400"
+                                                        >
+                                                            <SvgIcon
+                                                                name="close"
+                                                                className="fill-white group-hover/delete:fill-red-400"
+                                                            />
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </ImageUploading>
-                </div>
+                            )}
+                        </ImageUploading>
+                    </div>
 
-                {/* BANNER */}
-                <div className="w-full">
-                    <SubTitle className="!text-left">Banner</SubTitle>
+                    {/* BANNER */}
+                    <div className="w-full">
+                        <SubTitle className="!text-left">Banner</SubTitle>
 
-                    <ImageUploading
-                        value={formik.values.banner}
-                        onChange={handleChangeBanner}
-                        dataURLKey="data_url"
-                    >
-                        {({
-                              imageList,
-                              onImageUpload,
-                              onImageRemoveAll,
-                              onImageUpdate,
-                              onImageRemove,
-                              isDragging,
-                              dragProps,
-                          }) => (
-                            // write your building UI
-                            <div className="">
-                                <div className="flex justify-between gap-1">
-                                    {imageList.length === 0 && (
-                                        <Placeholder text="Add a banner" onClick={onImageUpload}/>
-                                    )}
-                                </div>
+                        <ImageUploading
+                            value={formik.values.banner}
+                            onChange={handleChangeBanner}
+                            dataURLKey="data_url"
+                        >
+                            {({
+                                  imageList,
+                                  onImageUpload,
+                                  onImageRemoveAll,
+                                  onImageUpdate,
+                                  onImageRemove,
+                                  isDragging,
+                                  dragProps,
+                              }) => (
+                                // write your building UI
                                 <div className="">
-                                    {imageList.map((image, index) => (
-                                        <div
-                                            key={index}
-                                            className="group/image relative h-[150px] w-full overflow-hidden rounded-xl border"
-                                        >
-                                            <img
-                                                src={image["data_url"]}
-                                                alt=""
-                                                width="100"
-                                                className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-cover"
-                                            />
+                                    <div className="flex justify-between gap-1">
+                                        {imageList.length === 0 && (
+                                            <Placeholder text="Add a banner" onClick={onImageUpload}/>
+                                        )}
+                                    </div>
+                                    <div className="">
+                                        {imageList.map((image, index) => (
                                             <div
-                                                className="image-item__btn-wrapper absolute h-full w-full bg-black opacity-0 group-hover/image:opacity-50">
-                                                <button
-                                                    onClick={() => onImageUpdate(index)}
-                                                    className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 font-bold text-white"
-                                                >
-                                                    Edit
-                                                </button>
-                                                <div className="group/delete inline-block">
+                                                key={index}
+                                                className="group/image relative h-[150px] w-full overflow-hidden rounded-xl border"
+                                            >
+                                                <img
+                                                    src={image["data_url"]}
+                                                    alt=""
+                                                    width="100"
+                                                    className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-cover"
+                                                />
+                                                <div
+                                                    className="image-item__btn-wrapper absolute h-full w-full bg-black opacity-0 group-hover/image:opacity-50">
                                                     <button
-                                                        onClick={() => onImageRemove(index)}
-                                                        className="absolute right-[5px] top-[5px] rounded-full border-2 p-2 group-hover/delete:border-red-400"
+                                                        onClick={() => onImageUpdate(index)}
+                                                        className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 font-bold text-white"
                                                     >
-                                                        <SvgIcon
-                                                            name="close"
-                                                            className="fill-white group-hover/delete:fill-red-400"
-                                                        />
+                                                        Edit
                                                     </button>
+                                                    <div className="group/delete inline-block">
+                                                        <button
+                                                            onClick={() => onImageRemove(index)}
+                                                            className="absolute right-[5px] top-[5px] rounded-full border-2 p-2 group-hover/delete:border-red-400"
+                                                        >
+                                                            <SvgIcon
+                                                                name="close"
+                                                                className="fill-white group-hover/delete:fill-red-400"
+                                                            />
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </ImageUploading>
+                            )}
+                        </ImageUploading>
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* SUBSCRIPTION */}
             <Card
@@ -309,13 +314,15 @@ const AccountCardForm = ({account}) => {
                 />
 
                 {/* WEBSITE */}
-                <TextInput
-                    label="website"
-                    id="website"
-                    name="website"
-                    value={formik.values.website}
-                    onChange={formik.handleChange}
-                />
+                {isDealer && (
+                    <TextInput
+                        label="website"
+                        id="website"
+                        name="website"
+                        value={formik.values.website}
+                        onChange={formik.handleChange}
+                    />
+                )}
 
                 {/* PHONE */}
                 <TextInput
@@ -393,377 +400,383 @@ const AccountCardForm = ({account}) => {
             </Card>
 
             {/* DESCRIPTION */}
-            <Card
-                title={<SubTitle className="!m-0 !text-left">Description</SubTitle>}
-            >
-                <div className="flex gap-2">
-                    <Input
-                        id="descriptionAl"
-                        name="descriptionAl"
-                        value={formik.values.descriptionAl}
-                        onChange={formik.handleChange}
-                        type="textarea"
-                        label={
-                            <p>
-                                Shqip <AL className="ml-1 inline-block h-4"/>
-                            </p>
-                        }
-                        labelClassName="w-full"
-                        placeholder="Shtoni pershkrimin"
-                    />
-                    <Input
-                        id="descriptionEn"
-                        name="descriptionEn"
-                        value={formik.values.descriptionEn}
-                        onChange={formik.handleChange}
-                        type="textarea"
-                        label={
-                            <p>
-                                English <GB className="ml-1 inline-block h-4"/>
-                            </p>
-                        }
-                        labelClassName="w-full"
-                        placeholder="Enter description"
-                    />
-                </div>
-            </Card>
+            {isDealer && (
+                <Card
+                    title={<SubTitle className="!m-0 !text-left">Description</SubTitle>}
+                >
+                    <div className="flex gap-2">
+                        <Input
+                            id="descriptionAl"
+                            name="descriptionAl"
+                            value={formik.values.descriptionAl}
+                            onChange={formik.handleChange}
+                            type="textarea"
+                            label={
+                                <p>
+                                    Shqip <AL className="ml-1 inline-block h-4"/>
+                                </p>
+                            }
+                            labelClassName="w-full"
+                            placeholder="Shtoni pershkrimin"
+                        />
+                        <Input
+                            id="descriptionEn"
+                            name="descriptionEn"
+                            value={formik.values.descriptionEn}
+                            onChange={formik.handleChange}
+                            type="textarea"
+                            label={
+                                <p>
+                                    English <GB className="ml-1 inline-block h-4"/>
+                                </p>
+                            }
+                            labelClassName="w-full"
+                            placeholder="Enter description"
+                        />
+                    </div>
+                </Card>
+            )}
 
             {/* FAQ */}
-            <Card title={<SubTitle className="!m-0 !text-left">FAQ</SubTitle>}>
-                <div className="flex gap-2">
-                    <div className="w-full">
-                        <InputLabel
-                            label={
-                                <>
-                                    Shqip <AL className="ml-1 inline-block h-4"/>
-                                </>
-                            }
-                        />
+            {isDealer && (
+                <Card title={<SubTitle className="!m-0 !text-left">FAQ</SubTitle>}>
+                    <div className="flex gap-2">
+                        <div className="w-full">
+                            <InputLabel
+                                label={
+                                    <>
+                                        Shqip <AL className="ml-1 inline-block h-4"/>
+                                    </>
+                                }
+                            />
 
-                        <div>
-                            {formik.values.faqAl.map((faq, index) => {
-                                return (
-                                    <div key={index} className="mb-2 flex gap-2">
-                                        <Button
-                                            variant="outline"
-                                            className="!h-auto w-6 border-red-400 !p-1 text-sm text-red-400"
-                                            onClick={() => removeFaq("Al", index)}
-                                        >
-                                            X
-                                        </Button>
-                                        <div className="w-full">
-                                            <Input
-                                                placeholder="Pyetja"
-                                                className="mb-2"
-                                                value={faq.title}
-                                                handleChange={(e) =>
-                                                    updateFaq("Al", "title", index, e.target.value)
-                                                }
-                                            />
-                                            <Input
-                                                placeholder="Pergjigja"
-                                                value={faq.content}
-                                                handleChange={(e) =>
-                                                    updateFaq("Al", "content", index, e.target.value)
-                                                }
-                                            />
+                            <div>
+                                {formik.values.faqAl.map((faq, index) => {
+                                    return (
+                                        <div key={index} className="mb-2 flex gap-2">
+                                            <Button
+                                                variant="outline"
+                                                className="!h-auto w-6 border-red-400 !p-1 text-sm text-red-400"
+                                                onClick={() => removeFaq("Al", index)}
+                                            >
+                                                X
+                                            </Button>
+                                            <div className="w-full">
+                                                <Input
+                                                    placeholder="Pyetja"
+                                                    className="mb-2"
+                                                    value={faq.title}
+                                                    handleChange={(e) =>
+                                                        updateFaq("Al", "title", index, e.target.value)
+                                                    }
+                                                />
+                                                <Input
+                                                    placeholder="Pergjigja"
+                                                    value={faq.content}
+                                                    handleChange={(e) =>
+                                                        updateFaq("Al", "content", index, e.target.value)
+                                                    }
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
-                                );
-                            })}
+                                    );
+                                })}
+                            </div>
+
+                            <div>
+                                <Button variant="text" onClick={() => addFaq("Al")}>
+                                    Add
+                                </Button>
+                            </div>
                         </div>
 
-                        <div>
-                            <Button variant="text" onClick={() => addFaq("Al")}>
-                                Add
-                            </Button>
+                        <div className="w-full">
+                            <InputLabel
+                                label={
+                                    <>
+                                        English <GB className="ml-1 inline-block h-4"/>
+                                    </>
+                                }
+                            />
+
+                            <div>
+                                {formik.values.faqEn?.map((faq, index) => {
+                                    return (
+                                        <div key={index} className="mb-2 flex gap-2">
+                                            <Button
+                                                variant="outline"
+                                                className="!h-auto w-6 border-red-400 !p-1 text-sm text-red-400"
+                                                onClick={() => removeFaq("En", index)}
+                                            >
+                                                X
+                                            </Button>
+                                            <div className="w-full">
+                                                <Input
+                                                    placeholder="Question"
+                                                    className="mb-2"
+                                                    value={faq.title}
+                                                    handleChange={(e) =>
+                                                        updateFaq("En", "title", index, e.target.value)
+                                                    }
+                                                />
+                                                <Input
+                                                    placeholder="Answer"
+                                                    value={faq.content}
+                                                    handleChange={(e) =>
+                                                        updateFaq("En", "content", index, e.target.value)
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            <div>
+                                <Button variant="text" onClick={() => addFaq("En")}>
+                                    Add
+                                </Button>
+                            </div>
                         </div>
                     </div>
+                </Card>
+            )}
 
-                    <div className="w-full">
-                        <InputLabel
-                            label={
-                                <>
-                                    English <GB className="ml-1 inline-block h-4"/>
-                                </>
-                            }
-                        />
+            {isDealer && (
+                <Card
+                    title={<SubTitle className="!m-0 !text-left">Availability</SubTitle>}
+                >
+                    {/* OPEN HOURS */}
+                    <table className="w-full table-auto">
+                        <thead>
+                        <tr>
+                            <td></td>
+                            <td className="pb-4">Open</td>
+                            <td>Close</td>
+                        </tr>
+                        </thead>
 
-                        <div>
-                            {formik.values.faqEn?.map((faq, index) => {
-                                return (
-                                    <div key={index} className="mb-2 flex gap-2">
-                                        <Button
-                                            variant="outline"
-                                            className="!h-auto w-6 border-red-400 !p-1 text-sm text-red-400"
-                                            onClick={() => removeFaq("En", index)}
-                                        >
-                                            X
-                                        </Button>
-                                        <div className="w-full">
-                                            <Input
-                                                placeholder="Question"
-                                                className="mb-2"
-                                                value={faq.title}
-                                                handleChange={(e) =>
-                                                    updateFaq("En", "title", index, e.target.value)
-                                                }
-                                            />
-                                            <Input
-                                                placeholder="Answer"
-                                                value={faq.content}
-                                                handleChange={(e) =>
-                                                    updateFaq("En", "content", index, e.target.value)
-                                                }
-                                            />
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                        <thead>
+                        {/* MONDAY */}
+                        <tr>
+                            <th className="min-w-[120px]">monday</th>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.monday.open")
+                                    }
+                                    value={formik.values.openHours.monday.open}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.monday.close")
+                                    }
+                                    value={formik.values.openHours.monday.close}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                        </tr>
 
-                        <div>
-                            <Button variant="text" onClick={() => addFaq("En")}>
-                                Add
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </Card>
+                        {/* TUESDAY */}
+                        <tr>
+                            <th className="min-w-[120px]">tuesday</th>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.tuesday.open")
+                                    }
+                                    value={formik.values.openHours.tuesday.open}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.tuesday.close")
+                                    }
+                                    value={formik.values.openHours.tuesday.close}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                        </tr>
 
-            <Card
-                title={<SubTitle className="!m-0 !text-left">Availability</SubTitle>}
-            >
-                {/* OPEN HOURS */}
-                <table className="w-full table-auto">
-                    <thead>
-                    <tr>
-                        <td></td>
-                        <td className="pb-4">Open</td>
-                        <td>Close</td>
-                    </tr>
-                    </thead>
+                        {/* WEDNESDAY */}
+                        <tr>
+                            <th className="min-w-[120px]">wednesday</th>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.wednesday.open")
+                                    }
+                                    value={formik.values.openHours.wednesday.open}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.wednesday.close")
+                                    }
+                                    value={formik.values.openHours.wednesday.close}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                        </tr>
 
-                    <thead>
-                    {/* MONDAY */}
-                    <tr>
-                        <th className="min-w-[120px]">monday</th>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.monday.open")
-                                }
-                                value={formik.values.openHours.monday.open}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.monday.close")
-                                }
-                                value={formik.values.openHours.monday.close}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                    </tr>
+                        {/* THURSDAY */}
+                        <tr>
+                            <th className="min-w-[120px]">thursday</th>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.thursday.open")
+                                    }
+                                    value={formik.values.openHours.thursday.open}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.thursday.close")
+                                    }
+                                    value={formik.values.openHours.thursday.close}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                        </tr>
 
-                    {/* TUESDAY */}
-                    <tr>
-                        <th className="min-w-[120px]">tuesday</th>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.tuesday.open")
-                                }
-                                value={formik.values.openHours.tuesday.open}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.tuesday.close")
-                                }
-                                value={formik.values.openHours.tuesday.close}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                    </tr>
+                        {/* FRIDAY */}
+                        <tr>
+                            <th className="min-w-[120px]">friday</th>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.friday.open")
+                                    }
+                                    value={formik.values.openHours.friday.open}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.friday.close")
+                                    }
+                                    value={formik.values.openHours.friday.close}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                        </tr>
 
-                    {/* WEDNESDAY */}
-                    <tr>
-                        <th className="min-w-[120px]">wednesday</th>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.wednesday.open")
-                                }
-                                value={formik.values.openHours.wednesday.open}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.wednesday.close")
-                                }
-                                value={formik.values.openHours.wednesday.close}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                    </tr>
+                        {/* SATURDAY */}
+                        <tr>
+                            <th className="min-w-[120px]">saturday</th>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.saturday.open")
+                                    }
+                                    value={formik.values.openHours.saturday.open}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.saturday.close")
+                                    }
+                                    value={formik.values.openHours.saturday.close}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                        </tr>
 
-                    {/* THURSDAY */}
-                    <tr>
-                        <th className="min-w-[120px]">thursday</th>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.thursday.open")
-                                }
-                                value={formik.values.openHours.thursday.open}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.thursday.close")
-                                }
-                                value={formik.values.openHours.thursday.close}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                    </tr>
-
-                    {/* FRIDAY */}
-                    <tr>
-                        <th className="min-w-[120px]">friday</th>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.friday.open")
-                                }
-                                value={formik.values.openHours.friday.open}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.friday.close")
-                                }
-                                value={formik.values.openHours.friday.close}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                    </tr>
-
-                    {/* SATURDAY */}
-                    <tr>
-                        <th className="min-w-[120px]">saturday</th>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.saturday.open")
-                                }
-                                value={formik.values.openHours.saturday.open}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.saturday.close")
-                                }
-                                value={formik.values.openHours.saturday.close}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                    </tr>
-
-                    {/* SUNDAY */}
-                    <tr>
-                        <th className="w-[150px]">sunday</th>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.sunday.open")
-                                }
-                                value={formik.values.openHours.sunday.open}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                        <td>
-                            <TimePicker
-                                id="openHours"
-                                className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
-                                onChange={(time) =>
-                                    handleChangeTime(time, "openHours.sunday.close")
-                                }
-                                value={formik.values.openHours.sunday.close}
-                                disableClock
-                                hourPlaceholder="hh"
-                                minutePlaceholder="mm"
-                            />
-                        </td>
-                    </tr>
-                    </thead>
-                </table>
-            </Card>
+                        {/* SUNDAY */}
+                        <tr>
+                            <th className="w-[150px]">sunday</th>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.sunday.open")
+                                    }
+                                    value={formik.values.openHours.sunday.open}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                            <td>
+                                <TimePicker
+                                    id="openHours"
+                                    className="TimePicker inline-block h-10 w-full rounded-sm border border-gray-400 px-2"
+                                    onChange={(time) =>
+                                        handleChangeTime(time, "openHours.sunday.close")
+                                    }
+                                    value={formik.values.openHours.sunday.close}
+                                    disableClock
+                                    hourPlaceholder="hh"
+                                    minutePlaceholder="mm"
+                                />
+                            </td>
+                        </tr>
+                        </thead>
+                    </table>
+                </Card>
+            )}
 
             <div className="flex items-center justify-end gap-2">
                 <Button variant="outline">Clear</Button>
