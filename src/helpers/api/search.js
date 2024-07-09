@@ -1,15 +1,23 @@
 import ApolloClient from "@/helpers/apollo-wrapper";
 import {gql} from "@apollo/client";
 import {DEFAULT_CATEGORY_SLUG} from "@/configs/constants";
+import {DEFAULT_SORT} from "@/store/features/search/slice";
 
-export const doSearch = async ({page = 1, limit = 2, category = DEFAULT_CATEGORY_SLUG, parameters = {}}) => {
+export const doSearch = async ({
+                                   page = 1,
+                                   limit = 2,
+                                   category = DEFAULT_CATEGORY_SLUG,
+                                   sort = DEFAULT_SORT,
+                                   parameters = {}
+                               }) => {
     const {data, error} = await ApolloClient.query({
         variables: {
             params: {
                 page: Number(page),
                 limit: Number(limit),
                 category,
-                parameters
+                parameters,
+                sort
             }
         },
         query: gql`

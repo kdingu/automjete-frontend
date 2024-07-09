@@ -15,6 +15,7 @@ const Select = ({
                     placeholderLabel = "",
                     labelClassName = "",
                     errorMessage = "",
+                    noPlaceholder,
                     ...rest
                 }) => {
     const defaultOptionSelected = !value || value === "";
@@ -37,9 +38,11 @@ const Select = ({
                     value={value}
                     {...rest}
                 >
-                    <option value="">
-                        {placeholderLabel}
-                    </option>
+                    {!noPlaceholder && (
+                        <option value="">
+                            {placeholderLabel}
+                        </option>
+                    )}
                     {data.map((option) => {
                         if (option.values) {
                             return (

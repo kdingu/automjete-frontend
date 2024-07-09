@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useState} from "react";
 import MainLayout from "@/components/main-layout";
 import Container from "@/components/container";
-import searchSlice from "@/store/features/search/slice";
+import searchSlice, {SORT_OPTIONS} from "@/store/features/search/slice";
 import {connect, useDispatch} from "react-redux";
 import sessionSlice from "@/store/features/session/slice";
 import useFilters from "@/helpers/hooks/useFilters";
@@ -22,6 +22,7 @@ import {useRouter} from "next/router";
 import SaveSearch from "@/components/results-detailed-filters/save-search";
 import Modal from "@/components/modal";
 import Input from "@/components/input";
+import Select from "@/components/select";
 
 const SearchResults = (props) => {
     const {
@@ -44,6 +45,7 @@ const SearchResults = (props) => {
         resultsCount,
         facets,
         parameters,
+        sort
     } = search;
 
     const [isSaveSearchModalOpen, setIsSaveSearchModalOpen] = useState(false);
@@ -67,6 +69,10 @@ const SearchResults = (props) => {
 
     const handleChangePage = (page) => {
         props.dispatch(searchSlice.actions.setSearch({page}));
+    };
+
+    const handleChangeSort = (event) => {
+        props.dispatch(searchSlice.actions.setSearch({sort: event.target.value}));
     };
 
     const handleSaveSearch = () => {
@@ -135,9 +141,10 @@ const SearchResults = (props) => {
                 limit,
                 category: category.slug,
                 parameters,
+                sort
             })
         );
-    }, [page, limit, params]);
+    }, [page, limit, params, sort]);
 
     return (
         <MainLayout>
@@ -184,7 +191,16 @@ const SearchResults = (props) => {
                                     savedSearchExists={savedSearchExists}
                                 />
                             </div>
-                            <div className="hidden lg:block">sort</div>
+                            <div className="hidden lg:block">
+                                <Select
+                                    labelPosition="left"
+                                    label="Sort"
+                                    noPlaceholder
+                                    data={SORT_OPTIONS}
+                                    value={sort}
+                                    onChange={handleChangeSort}
+                                />
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-5">

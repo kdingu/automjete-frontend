@@ -1,10 +1,19 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+export const SORT_OPTIONS = [
+    {value: "sort_price_asc", label: "Price Ascending"},
+    {value: "sort_price_desc", label: "Price Descending"},
+    {value: "sort_relevance", label: "Relevance"}
+];
+
+export const DEFAULT_SORT = "sort_relevance";
+
 const initialState = {
     loading: false,
     page: 1,
     limit: 10,
     totalPages: 1,
+    sort: DEFAULT_SORT,
     parameters: {},
     results: [],
     facets: [],
