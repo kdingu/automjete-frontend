@@ -3,17 +3,16 @@ import Title from "@/components/title";
 import Button from "@/components/button";
 import Link from "next/link";
 import {GoogleMapsEmbed} from "@next/third-parties/google";
-import MotorsImage from "@/components/motors-image";
 
 const PrivateProfilePage = ({account, isSelfAccount}) => {
+    const address = account?.address || {};
+
+    const googleMapsQuery = `${address.address_line_1},${address.address_line_2},${address.city?.name},${address.country?.name},${address.zip_code}`;
+
     return (
         <div>
             {/* Widget 1 */}
             <div className="border flex flex-col lg:flex-row min-h-[580px]">
-                {/*<div className="w-12/12 lg:w-8/12 bg-teal-50 relative min-h-[400px]">*/}
-                {/*    <MotorsImage fill className="object-contain" src={account.banner?.externalUrl}/>*/}
-                {/*</div>*/}
-
                 <div className="w-full p-4 flex flex-col">
                     <h1 className="text-2xl">{account.name}</h1>
 
@@ -70,7 +69,7 @@ const PrivateProfilePage = ({account, isSelfAccount}) => {
                             width="100%"
                             height={400}
                             mode="place"
-                            q={`${account.address.address_line_1},${account.address.address_line_2},${account.address.city.name},${account.address.country.name},${account.address.zip_code}`}
+                            q={googleMapsQuery}
                         />
                     </div>
                 </div>
