@@ -206,7 +206,7 @@ const DealerProfilePage = ({dealer, contactForm, isSelfAccount}) => {
                     <div className="lg:w-5/12">
                         <p className="mb-4">Need to reach us quickly?</p>
                         <p className="mb-4">Call or live chat with us to get a quick response to your query.</p>
-                        <Link href={`phone:${dealer.phone}`}>
+                        <Link href={`tel:${dealer.phone}`}>
                             <Button variant="outline" className="w-full mt-8 block">Call {dealer.phone}</Button>
                         </Link>
                     </div>
