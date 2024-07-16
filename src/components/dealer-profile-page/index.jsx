@@ -148,25 +148,25 @@ const DealerProfilePage = ({dealer, contactForm, isSelfAccount}) => {
                 <hr className="mt-10 mb-12 lg:mt-32 lg:mb-20"/>
 
                 {/* Widget 4 */}
-                <div>
-                    <Title className="!text-left mb-6">Why buy from us?</Title>
-                    <div>Todo carousel with mini cards</div>
-                </div>
+                {/*<div>*/}
+                {/*    <Title className="!text-left mb-6">Why buy from us?</Title>*/}
+                {/*    <div>Todo carousel with mini cards</div>*/}
+                {/*</div>*/}
 
-                <hr className="mt-10 mb-12 lg:mt-32 lg:mb-20"/>
+                {/*<hr className="mt-10 mb-12 lg:mt-32 lg:mb-20"/>*/}
 
                 {/* Widget 5 */}
-                <div>
-                    <Title className="!text-left mb-6">Featured stock</Title>
-                    <div>Todo carousel with cards</div>
-                    <div className="mt-4 text-center">
-                        <Link href="#">
-                            <Button>Vew more <SvgIcon name="arrow-right"/></Button>
-                        </Link>
-                    </div>
-                </div>
+                {/*<div>*/}
+                {/*    <Title className="!text-left mb-6">Featured stock</Title>*/}
+                {/*    <div>Todo carousel with cards</div>*/}
+                {/*    <div className="mt-4 text-center">*/}
+                {/*        <Link href="#">*/}
+                {/*            <Button>Vew more <SvgIcon name="arrow-right"/></Button>*/}
+                {/*        </Link>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
 
-                <hr className="mt-10 mb-12 lg:mt-32 lg:mb-20"/>
+                {/*<hr className="mt-10 mb-12 lg:mt-32 lg:mb-20"/>*/}
 
                 {/* Widget 6 */}
                 {dealer.address && (
