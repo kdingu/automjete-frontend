@@ -50,7 +50,7 @@ const ProductPage = ({isLoggedIn, vehicle, savedVehicles}) => {
                 </div>
                 <div className="md:w-5/12 hidden md:block">
                     <MainProductData product={vehicle}/>
-                    <div className="text-2xl mt-5">Financing: Coming soon</div>
+                    {/*<div className="text-2xl mt-5">Financing: Coming soon</div>*/}
                 </div>
             </div>
             {/*<div className="flex gap-10">*/}
