@@ -23,6 +23,7 @@ import SaveSearch from "@/components/results-detailed-filters/save-search";
 import Modal from "@/components/modal";
 import Input from "@/components/input";
 import Select from "@/components/select";
+import useSavedVehiclesUpdater from "@/helpers/hooks/useSavedVehiclesUpdater";
 
 const SearchResults = (props) => {
     const {
@@ -98,27 +99,11 @@ const SearchResults = (props) => {
         }
     };
 
+    const updateSavedVehicles = useSavedVehiclesUpdater(savedVehicles);
+
     const handleSaveVehicle = (e, vehicle) => {
         e.stopPropagation();
-        let newVehicles = [];
-        if (
-            savedVehicles?.vehicles?.find(
-                (vehicleData) => vehicleData.id === vehicle.id
-            )
-        ) {
-            newVehicles = savedVehicles?.vehicles.filter(
-                (vehicleData) => vehicleData === vehicle.id
-            );
-        } else newVehicles = [...savedVehicles?.vehicles, vehicle];
-        dispatch(
-            sessionSlice.actions.updateSavedVehicles({
-                token: token,
-                id: userId,
-                savedVehicles: {
-                    vehicles: newVehicles,
-                },
-            })
-        );
+        updateSavedVehicles(vehicle);
     };
 
     const handleOpenModal = () => {
@@ -162,6 +147,7 @@ const SearchResults = (props) => {
                     />
                 </Modal>
             )}
+
             <ResultsDetailedFiltersMobile filters={filters}/>
 
             <Container className="my-2 lg:my-10">
@@ -217,6 +203,7 @@ const SearchResults = (props) => {
                                             savedVehiclesExists={savedVehicles.vehicles?.find(
                                                 (vehicleData) => vehicleData.id === vehicle.id
                                             )}
+                                            disableSave={!loggedIn}
                                         />
                                     );
                                 })}

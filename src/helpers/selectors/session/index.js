@@ -9,4 +9,4 @@ export const getSessionError = (state) => getSession(state).error || "";
 export const getSessionAccount = (state) => getSession(state).account || {};
 export const getSessionUserId = (state) => getSessionUser(state).id || "";
 export const getSessionUserSavedSearches = (state) => getSessionUser(state).savedSearches || {};
-export const getSessionUserSavedVehicles = (state) => getSessionUser(state).savedVehicles || [];
+export const getSessionUserSavedVehicles = (state) => getSessionUser(state).savedVehicles || {vehicles: []};

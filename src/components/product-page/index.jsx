@@ -4,10 +4,20 @@ import ProductImages from "./components/product-images";
 import SvgIcon from "../svg-icon";
 import MainProductData from "./components/main-product-data";
 import FullProductData from "./components/full-product-data";
+import {getSessionUserSavedVehicles} from "@/helpers/selectors";
+import {connect} from "react-redux";
+import useSavedVehiclesUpdater from "@/helpers/hooks/useSavedVehiclesUpdater";
 
-const ProductPage = ({vehicle}) => {
+const ProductPage = ({vehicle, savedVehicles}) => {
+    const isSaved = savedVehicles?.vehicles?.find((vehicleData) => vehicleData.id === vehicle.id);
+
     const router = useRouter();
-    const wishlisted = false;
+    const saveVehicleHandler = useSavedVehiclesUpdater(savedVehicles);
+
+    const handleClickSave = () => {
+        saveVehicleHandler(vehicle);
+    };
+
     return (
         <>
             <div className="flex justify-between mt-4 mb-4">
@@ -15,16 +25,16 @@ const ProductPage = ({vehicle}) => {
                     <SvgIcon name="backIconPdp"/>
                 </div>
                 <div className="flex gap-4">
-          <span className="cursor-pointer">
-            {wishlisted ? (
-                <SvgIcon name="wishlistRedFull"/>
-            ) : (
-                <SvgIcon name="wishlistRedEmpty"/>
-            )}
-          </span>
+                    <span className="cursor-pointer" onClick={handleClickSave}>
+                        {isSaved ? (
+                            <SvgIcon name="wishlistRedFull"/>
+                        ) : (
+                            <SvgIcon name="wishlistRedEmpty"/>
+                        )}
+                    </span>
                     <span className="cursor-pointer">
-            <SvgIcon name="shareSocial"/>
-          </span>
+                        <SvgIcon name="shareSocial"/>
+                    </span>
                 </div>
             </div>
             <div className="flex gap-10">
@@ -50,4 +60,10 @@ const ProductPage = ({vehicle}) => {
     );
 };
 
-export default ProductPage;
+const getProps = (state) => {
+    return {
+        savedVehicles: getSessionUserSavedVehicles(state),
+    }
+};
+
+export default connect(getProps)(ProductPage);
