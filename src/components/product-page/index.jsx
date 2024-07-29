@@ -53,12 +53,12 @@ const ProductPage = ({isLoggedIn, vehicle, savedVehicles}) => {
                     <div className="text-2xl mt-5">Financing: Coming soon</div>
                 </div>
             </div>
-            <div className="flex gap-10">
-                <div className="w-7/12">
-                </div>
-                <div className="w-5/12">
-                </div>
-            </div>
+            {/*<div className="flex gap-10">*/}
+            {/*    <div className="w-7/12">*/}
+            {/*    </div>*/}
+            {/*    <div className="w-5/12">*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </>
     );
 };
