@@ -4,11 +4,11 @@ import ProductImages from "./components/product-images";
 import SvgIcon from "../svg-icon";
 import MainProductData from "./components/main-product-data";
 import FullProductData from "./components/full-product-data";
-import {getSessionUserSavedVehicles} from "@/helpers/selectors";
+import {getSessionLoggedIn, getSessionUserSavedVehicles} from "@/helpers/selectors";
 import {connect} from "react-redux";
 import useSavedVehiclesUpdater from "@/helpers/hooks/useSavedVehiclesUpdater";
 
-const ProductPage = ({vehicle, savedVehicles}) => {
+const ProductPage = ({isLoggedIn, vehicle, savedVehicles}) => {
     const isSaved = savedVehicles?.vehicles?.find((vehicleData) => vehicleData.id === vehicle.id);
 
     const router = useRouter();
@@ -25,13 +25,16 @@ const ProductPage = ({vehicle, savedVehicles}) => {
                     <SvgIcon name="backIconPdp"/>
                 </div>
                 <div className="flex gap-4">
-                    <span className="cursor-pointer" onClick={handleClickSave}>
-                        {isSaved ? (
-                            <SvgIcon name="wishlistRedFull"/>
-                        ) : (
-                            <SvgIcon name="wishlistRedEmpty"/>
-                        )}
-                    </span>
+                    {isLoggedIn && (
+                        <span className="cursor-pointer" onClick={handleClickSave}>
+                            {isSaved ? (
+                                <SvgIcon name="wishlistRedFull"/>
+                            ) : (
+                                <SvgIcon name="wishlistRedEmpty"/>
+                            )}
+                        </span>
+                    )}
+
                     <span className="cursor-pointer">
                         <SvgIcon name="shareSocial"/>
                     </span>
@@ -63,6 +66,7 @@ const ProductPage = ({vehicle, savedVehicles}) => {
 const getProps = (state) => {
     return {
         savedVehicles: getSessionUserSavedVehicles(state),
+        isLoggedIn: getSessionLoggedIn(state)
     }
 };
 
