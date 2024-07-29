@@ -44,12 +44,34 @@ const DealerProfilePage = ({dealer, contactForm, isSelfAccount}) => {
         return weekDays[new Date().getDay() - 1] === day;
     };
 
+    const isCurrentTimeBetween = (startHourStr, endHourStr) => {
+        // Helper function to convert time string to minutes since midnight
+        function timeToMinutes(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+
+        const now = new Date();
+        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+        const startMinutes = timeToMinutes(startHourStr);
+        const endMinutes = timeToMinutes(endHourStr);
+
+        // Handle cases where startHour is greater than endHour (e.g., 22:00 to 06:00)
+        if (startMinutes > endMinutes) {
+            return currentMinutes >= startMinutes || currentMinutes < endMinutes;
+        } else {
+            return currentMinutes >= startMinutes && currentMinutes < endMinutes;
+        }
+    };
+
     const getIsOpenNow = () => {
-        const day = weekDays[new Date().getDay() - 1];
+        const today = new Date();
+        const day = weekDays[today.getDay() - 1];
+        const openHours = getOpenHours(day);
+        const inWorkingHours = isCurrentTimeBetween(dealer.openHours[day]?.open, dealer.openHours[day]?.close);
 
-        // todo...
-
-        return getIsToday(day);
+        return openHours !== 'closed' && inWorkingHours;
     };
 
     return (
