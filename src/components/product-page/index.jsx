@@ -35,9 +35,9 @@ const ProductPage = ({isLoggedIn, vehicle, savedVehicles}) => {
                         </span>
                     )}
 
-                    <span className="cursor-pointer">
-                        <SvgIcon name="shareSocial"/>
-                    </span>
+                    {/*<span className="cursor-pointer">*/}
+                    {/*    <SvgIcon name="shareSocial"/>*/}
+                    {/*</span>*/}
                 </div>
             </div>
             <div className="flex gap-10">
