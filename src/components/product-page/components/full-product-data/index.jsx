@@ -7,6 +7,14 @@ import AccordionItem from "@/components/accordion/accordion-item";
 import ProductOwnerData from "../product-owner-data";
 import {groupBy} from "lodash/collection";
 
+const UnknownBlock = () => {
+    const {t} = useTranslation("product");
+
+    return (
+        <span>{t('unknownText')}</span>
+    )
+};
+
 const FullProductData = ({product}) => {
     const {t} = useTranslation("product");
     const groupedAttributes = groupBy((product?.attributeValues || []), "attribute.group")
@@ -29,8 +37,8 @@ const FullProductData = ({product}) => {
                     <TechnicalSpec
                         key={data}
                         index={index}
-                        label={t(`${data.attribute.code}Label`)}
-                        value={data.attribute.options.find(option => option.value === data.data.value)?.label}
+                        label={t(`${data.attribute.label}`)}
+                        value={data.attribute.options.find(option => option.value === data.data.value)?.label || <UnknownBlock />}
                     />
                 ))}
             </div>
