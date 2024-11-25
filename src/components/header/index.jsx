@@ -41,8 +41,9 @@ const Header = (props) => {
     const handleSelectCategory = (category) => {
         setCookie('category', category);
         const url = new URL('/', location.origin);
-        router.push(url.toString());
-        // router.reload();
+        // router.push(url.toString());
+        // setTimeout(() => router.reload(), 100);
+        window.location = url.toString();
     };
 
     useEffect(() => {
