@@ -2,7 +2,6 @@ import React from "react";
 import MainLayout from "@/components/main-layout";
 import Container from "@/components/container";
 import MainBannerCTA from "@/components/main-banner-cta";
-// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import {serverUsePageData} from "@/helpers/utilities/server-side-utils";
 import BrowseBrands from "@/components/browse-brands";
 import {useSelector} from "react-redux";
@@ -12,6 +11,7 @@ import Link from "next/link";
 import Button from "@/components/button";
 import MotorsImage from "@/components/motors-image";
 import SvgIcon from "@/components/svg-icon";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Home = (props) => {
     const {pageData} = props;
@@ -80,14 +80,14 @@ const Home = (props) => {
 export default Home;
 
 export const getServerSideProps = async ({req, res, locale}) => {
-    // const locales = await serverSideTranslations(locale ?? "al", [
-    //   "common", "login",
-    // ]);
+    const locales = await serverSideTranslations(locale ?? "al", [
+      "common", "login", "filters"
+    ]);
 
     return {
         props: {
             locale,
-            // ...locales,
+            ...locales,
             pageData: await serverUsePageData("homepage"),
         },
     };

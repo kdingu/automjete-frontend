@@ -4,8 +4,10 @@ import {getSearchFormData} from "@/components/main-banner-cta/selectors";
 import {connect} from "react-redux";
 import {useRouter} from "next/router";
 import useFilters from "@/helpers/hooks/useFilters";
+import {useTranslation} from "next-i18next";
 
-const SearchForm = () => {
+const SearchForm = (props) => {
+    const {t} = useTranslation();
     const router = useRouter();
 
     const onSubmit = (values) => {
@@ -22,7 +24,7 @@ const SearchForm = () => {
             onSubmit={filters.formik.handleSubmit}
             className="relative z-10 w-96 rounded bg-white p-4"
         >
-            <h2 className="mb-4 text-center">Find your perfect car</h2>
+            <h2 className="mb-4 text-center">{t("find your perfect car")}</h2>
 
             {filters.facets.fields.map((field) => {
                 return (
@@ -41,15 +43,15 @@ const SearchForm = () => {
             <Button
                 className="w-full"
                 icon="search"
-                text="Search"
+                text={t("search")}
                 onClick={filters.formik.handleSubmit}
             />
 
             <div className="mt-1 flex justify-between">
-                <Button variant="link" text="Reset" onClick={filters.formik.handleReset}/>
+                <Button variant="link" text={t("reset")} onClick={filters.formik.handleReset}/>
                 <Button
                     variant="link"
-                    text="More options"
+                    text={t("more options")}
                     onClick={() => router.push("/search")}
                 />
             </div>

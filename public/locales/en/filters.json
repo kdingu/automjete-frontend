@@ -1,0 +1,8 @@
+{
+  "post_code": "Post Code",
+  "range": "Range",
+  "make": "Make",
+  "model": "Model",
+  "price_min": "Max Price",
+  "price_max": "Min Price"
+}

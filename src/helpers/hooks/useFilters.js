@@ -6,6 +6,7 @@ import searchSlice from "@/store/features/search/slice";
 import Select from "@/components/select";
 import TextInput from "@/components/input/text-input";
 import SelectCheckbox from "@/components/select/select-checkbox";
+import {useTranslation} from "next-i18next";
 
 // TODO get from BE
 const range = [
@@ -116,16 +117,17 @@ const useFilters = (props = {}) => {
     const initialValues = getInitialState(facets, searchParameters);
     const options = useMemo(() => getOptionsForFacets(applicationData, searchParameters), [applicationData, searchParameters]);
     const formik = useFormik({initialValues, onSubmit});
+    const {t} = useTranslation("filters");
 
-    const getComponentForFilter = useCallback(({type, filter}, _options = {}) => {
+    const getComponentForFilter = ({type, filter}, _options = {}) => {
         switch (type.toLowerCase()) {
             case "injected":
                 return _options.component(_options.props);
             case "select":
                 return (
                     <Select
-                        label={_options.showLabel ? filter : ""}
-                        placeholderLabel={filter}
+                        label={_options.showLabel ? t(filter) : ""}
+                        placeholderLabel={t(filter)}
                         data={options[filter]}
                         id={filter}
                         name={filter}
@@ -136,7 +138,7 @@ const useFilters = (props = {}) => {
             case "checkbox":
                 return (
                     <SelectCheckbox
-                        data={[{label: filter, value: filter}]}
+                        data={[{label: t(filter), value: filter}]}
                         id={filter}
                         name={filter}
                         onChange={formik.setFieldValue}
@@ -146,7 +148,7 @@ const useFilters = (props = {}) => {
             case "select_checkbox":
                 return (
                     <SelectCheckbox
-                        label={_options.showLabel ? filter : ""}
+                        label={_options.showLabel ? t(filter) : ""}
                         data={options[filter]}
                         id={filter}
                         name={filter}
@@ -158,7 +160,7 @@ const useFilters = (props = {}) => {
                 return (
                     <SelectCheckbox
                         multiselect
-                        label={_options.showLabel ? filter : ""}
+                        label={_options.showLabel ? t(filter) : ""}
                         data={options[filter]}
                         id={filter}
                         name={filter}
@@ -170,7 +172,7 @@ const useFilters = (props = {}) => {
                 return (
                     <SelectCheckbox
                         multiselect
-                        label={_options.showLabel ? filter : ""}
+                        label={_options.showLabel ? t(filter) : ""}
                         data={options[filter]}
                         id={filter}
                         name={filter}
@@ -181,8 +183,8 @@ const useFilters = (props = {}) => {
             case "text":
                 return (
                     <TextInput
-                        label={_options.showLabel ? filter : ""}
-                        placeholder={filter}
+                        label={_options.showLabel ? t(filter) : ""}
+                        placeholder={t(filter)}
                         id={filter}
                         name={filter}
                         onChange={formik.handleChange}
@@ -193,7 +195,7 @@ const useFilters = (props = {}) => {
                 console.warn(`No component and case handler defined for filter type: ${type}`);
                 return <span className="text-red-600 text-xs">No case for &quot;{type}&quot;</span>;
         }
-    }, [formik]);
+    };
 
     const handleClear = () => {
         dispatch(searchSlice.actions.setSearch({
