@@ -4,8 +4,6 @@ import {appWithTranslation} from "next-i18next";
 import {reduxWrapper} from "@/store/store";
 import applicationSlice from "@/store/features/application/slice";
 import {Provider} from "react-redux";
-// import { useRouter } from "next/router";
-// import { PersistGate } from "redux-persist/integration/react";
 import {ApolloProvider} from "@apollo/client";
 import ApolloClient from "../helpers/apollo-wrapper";
 import "../../public/styles/globals.css";
@@ -26,16 +24,6 @@ const MyApp = ({Component, pageProps, ...rest}) => {
         () => setLoading(true),
         () => setLoading(false),
     );
-
-    // const router = useRouter();
-
-    // useEffect(() => {
-    //   if (!router.query.category) {
-    //     const category = wrapper.store.getState().application.data.currentCategory.slug
-    //
-    //     router.replace(router.pathname, {query: {...router.query}});
-    //   }
-    // }, [router.pathname]);
 
     return (
         <StrictMode>
