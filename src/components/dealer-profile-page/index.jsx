@@ -47,7 +47,7 @@ const DealerProfilePage = ({dealer, contactForm, isSelfAccount}) => {
     const isCurrentTimeBetween = (startHourStr, endHourStr) => {
         // Helper function to convert time string to minutes since midnight
         function timeToMinutes(timeStr) {
-            const [hours, minutes] = timeStr.split(':').map(Number);
+            const [hours, minutes] = timeStr?.split(':')?.map(Number);
             return hours * 60 + minutes;
         }
 

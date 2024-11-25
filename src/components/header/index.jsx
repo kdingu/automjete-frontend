@@ -13,7 +13,7 @@ import css from "./styles.module.css";
 import MenuItem from "../menu-item";
 import {useRouter} from "next/router";
 import {addListener} from "@reduxjs/toolkit";
-import {eraseCookie} from "@/helpers/utilities/utils";
+import {eraseCookie, setCookie} from "@/helpers/utilities/utils";
 import {SESSION_EXPIRED_ERROR, SESSION_KEY} from "@/configs/constants";
 
 const Header = (props) => {
@@ -36,6 +36,13 @@ const Header = (props) => {
     const navigate = (url) => () => {
         router.push(url);
         router.reload();
+    };
+
+    const handleSelectCategory = (category) => {
+        setCookie('category', category);
+        const url = new URL('/', location.origin);
+        router.push(url.toString());
+        // router.reload();
     };
 
     useEffect(() => {
@@ -77,14 +84,15 @@ const Header = (props) => {
             <div className="bg-teal py-2">
                 <Container>
                     <div className="hidden gap-3 text-xs lg:flex">
-                        {props.categories.map((ctg) => (
-                            <a
+                        {props.categories.map((ctg, index) => (
+                            <button
+                                tabIndex={index}
                                 key={ctg.id}
                                 className="cursor-pointer text-white transition hover:!text-teal-800"
-                                href={`/?category=${ctg.slug}`}
+                                onClick={() => handleSelectCategory(ctg.slug)}
                             >
                                 {ctg.name}
-                            </a>
+                            </button>
                         ))}
                     </div>
                 </Container>

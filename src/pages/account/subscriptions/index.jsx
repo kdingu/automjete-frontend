@@ -7,7 +7,10 @@ function Subscriptions() {
     return (
         <MainLayout>
             <Container className="my-10">
-                <WorkInProgress />
+                <div>Boost 1</div>
+                <div>Boost 2</div>
+                <div>Boost 3</div>
+                <WorkInProgress/>
             </Container>
         </MainLayout>
     );

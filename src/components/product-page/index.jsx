@@ -11,6 +11,8 @@ import useSavedVehiclesUpdater from "@/helpers/hooks/useSavedVehiclesUpdater";
 const ProductPage = ({isLoggedIn, vehicle, savedVehicles}) => {
     const isSaved = savedVehicles?.vehicles?.find((vehicleData) => vehicleData.id === vehicle.id);
 
+    if (!vehicle?.owner) vehicle.owner = {};
+
     const router = useRouter();
     const saveVehicleHandler = useSavedVehiclesUpdater(savedVehicles);
 

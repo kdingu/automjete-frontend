@@ -33,8 +33,8 @@ const Account = (props) => {
         },
         {
             id: "items22",
-            title: "Subscriptions",
-            description: "Manage what emails and notifications you receive. Manage what emails and notifications you receive",
+            title: "Subscriptions and Packages",
+            description: "Boost your posts for a higher chance to sell them, or become a certified Dealer in our platform",
             href: "/account/subscriptions",
         },
     ];

@@ -58,7 +58,9 @@ const MyApp = ({Component, pageProps, ...rest}) => {
 };
 
 const getCategoryFromRequest = (context) => {
-    return context.query.category || DEFAULT_CATEGORY_SLUG;
+    const category = context.req?.cookies['category'] || DEFAULT_CATEGORY_SLUG;
+
+    return category;
 };
 
 MyApp.getInitialProps = reduxWrapper.getInitialAppProps(storeWrapper => async ({ctx, ...rest}) => {
